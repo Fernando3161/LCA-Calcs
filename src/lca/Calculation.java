@@ -42,9 +42,9 @@ public class Calculation {
 
 	public static void main(String[] args) {
 		IDatabase db = connectDB("20210526ppre_sustainability_db");
-		//File lib_folder = new File(".");
+		File lib_folder = new File(".");
 
-		//NativeLibrary.loadFromDir(lib_folder);
+		NativeLibrary.loadFromDir(lib_folder);
 		Julia.load();
 		ProductSystemDao psDao = new ProductSystemDao(db);
 		ProductSystem ps = psDao.getForName("Trans Filled Bottle").get(0);
