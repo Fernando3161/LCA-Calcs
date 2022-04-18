@@ -22,7 +22,7 @@ import org.openlca.core.results.SimpleResult;
 import org.openlca.eigen.NativeLibrary;
 import org.openlca.julia.Julia;
 import org.openlca.julia.JuliaSolver;
-import org.openlca.julia.Umfpack;
+
 
 public class Calculation {
 
@@ -30,7 +30,8 @@ public class Calculation {
 
 		IDatabase db = null;
 		try {
-			String dbpath = "C:/Users/fpenaherrera_vaca/openLCA-data-1.4/databases/" + db_name;
+			//String dbpath = "C:/Users/fpenaherrera_vaca/openLCA-data-1.4/databases/" + db_name;
+			String dbpath = "C:/Users/Besitzer/openLCA-data-1.4/databases/" + db_name;
 			db = new DerbyDatabase(new File(dbpath));
 			System.out.println(db.getName() + " ZOLCA Database Connected");
 		} catch (Exception e) {
@@ -41,11 +42,14 @@ public class Calculation {
 	}
 
 	public static void main(String[] args) {
+		org.apache.log4j.BasicConfigurator.configure();
 		IDatabase db = connectDB("20210526ppre_sustainability_db");
-		File lib_folder = new File(".");
-
-		NativeLibrary.loadFromDir(lib_folder);
-		Julia.load();
+		
+		//Path of installation of openLCA
+		File lib_folder = new File("C:/Program Files (x86)/openLCA");
+		Julia.loadFromDir(lib_folder);
+	    var solver = new JuliaSolver();
+		
 		ProductSystemDao psDao = new ProductSystemDao(db);
 		ProductSystem ps = psDao.getForName("Trans Filled Bottle").get(0);
 
@@ -56,18 +60,14 @@ public class Calculation {
 
 		System.out.println("Done2");
 
-		JuliaSolver solver = new JuliaSolver();
-
 		MatrixCache matrixCache = MatrixCache.createLazy(db);
 		SystemCalculator calculator = new SystemCalculator(matrixCache, solver);
-		CalculationSetup setup = new CalculationSetup(CalculationType.UPSTREAM_ANALYSIS, ps);
+		CalculationSetup setup = new CalculationSetup(CalculationType.CONTRIBUTION_ANALYSIS, ps);
 		setup.impactMethod = methodDao.getDescriptorForRefId(methodCalc.refId);
-		// setup.numberOfRuns = 100;
 
 		System.out.println("Done3");
 
 		result = calculator.calculateFull(setup);
-
 		System.out.println(result);
 		System.out.println("Done4");
 

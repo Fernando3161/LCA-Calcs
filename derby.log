@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Fri Apr 15 22:31:13 CEST 2022:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-2eec-3492-000002969fc8 
-on database directory C:\Users\fpenaherrera_vaca\openLCA-data-1.4\databases\20210526ppre_sustainability_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6d5380c2 
-Loaded from file:/C:/Users/fpenaherrera_vaca/Software/openLCA/plugins/olca-app_1.11.0/libs/derby-10.14.2.0.jar
+Mon Apr 18 04:09:22 CEST 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0180-3a6e-7fc1-000001ae0200 
+on database directory C:\Users\Besitzer\openLCA-data-1.4\databases\20210526ppre_sustainability_db with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6bc168e5 
+Loaded from file:/D:/DissGit/LCA-Calcs/olca-app_1.11.0/libs/derby-10.14.2.0.jar
 java.vendor=Eclipse Adoptium
 java.runtime.version=17.0.2+8
-user.dir=C:\Users\fpenaherrera_vaca\Software\DeveloperWorkspace\LCA
+user.dir=D:\DissGit\LCA-Calcs
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
