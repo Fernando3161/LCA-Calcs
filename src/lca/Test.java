@@ -17,6 +17,8 @@ public class Test {
 		Julia.loadFromDir(new File("C:/Program Files (x86)/openLCA") );
 		int c = Julia.invert(2, a);
 		System.out.println(c);
+		
+		 System.out.println(System.getenv("USERNAME"));
 
 
 	}
